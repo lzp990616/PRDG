@@ -2,7 +2,7 @@
 --extra-index-url https://download.pytorch.org/whl/cu118
 ultralytics==8.4.135
 torch==2.3.1+cu118
-opencv-python==5.0.0.93
+opencv-python==4.10.0.84
 numpy==1.26.4
 scipy==1.14.1
 pandas==3.0.6

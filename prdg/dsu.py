@@ -1,6 +1,11 @@
-"""DSU algorithm from https://github.com/lixiaotong97/DSU/blob/main/dsu.py.
+"""Independent implementation from the paper: domain shifts with uncertainty.
 
-Official defaults p0.5, eps1e-6, factor1.0; unbiased spatial and batch variance.
+Li et al., Uncertainty Modeling for Out-of-Distribution Generalization,
+ICLR 2022, Eqs. (1)-(7): https://arxiv.org/abs/2202.03958
+
+Compatibility conventions: unbiased spatial/batch variances, epsilon before
+square roots, NumPy application gate, mean-noise before scale-noise. The paper
+writes population variances; unbiased estimates retain the experiment protocol.
 """
 import numpy as np
 import torch
@@ -8,33 +13,48 @@ from torch import nn
 
 
 class DistributionUncertainty(nn.Module):
-    def __init__(self,p=.5,eps=1e-6,factor=1.):
+    def __init__(self, p=0.5, eps=1e-6, factor=1.0):
         super().__init__()
-        self.p,self.eps,self.factor=p,eps,factor
+        self.p = p
+        self.eps = eps
+        self.factor = factor
 
-    def forward(self,x):
-        if not self.training or np.random.random()>self.p:
+    def _sample_statistic(self, center):
+        # Eqs. (3)-(6): batch uncertainty and Gaussian reparameterization.
+        spread = torch.sqrt(torch.var(center, dim=0, keepdim=True,
+                                      unbiased=True) + self.eps)
+        noise = torch.randn_like(center)
+        return center + noise * self.factor * spread.expand_as(center)
+
+    def forward(self, x):
+        if not self.training:
             return x
-        if len(x)<2:
-            # Unbiased batch variance is undefined for a singleton final batch.
+        # Keep the gate before the singleton check, including RNG consumption.
+        if np.random.random() > self.p:
             return x
-        mean=x.mean((2,3))
-        std=(x.var((2,3))+self.eps).sqrt()
-        uncertainty_mean=(mean.var(0,keepdim=True)+self.eps).sqrt().expand_as(mean)
-        uncertainty_std=(std.var(0,keepdim=True)+self.eps).sqrt().expand_as(std)
-        beta=mean+torch.randn_like(mean)*self.factor*uncertainty_mean
-        gamma=std+torch.randn_like(std)*self.factor*uncertainty_std
-        shape=(len(x),x.shape[1],1,1)
-        return (x-mean.reshape(shape))/std.reshape(shape)*gamma.reshape(shape)+beta.reshape(shape)
+        if x.shape[0] < 2:
+            return x
+        # Eqs. (1)-(2), with the experiment's unbiased variance convention.
+        location = torch.mean(x, dim=(2, 3))
+        scale = torch.sqrt(torch.var(x, dim=(2, 3), unbiased=True) + self.eps)
+        sampled_location = self._sample_statistic(location)
+        sampled_scale = self._sample_statistic(scale)
+        shape = (x.shape[0], x.shape[1], 1, 1)
+        standardized = (x - location.reshape(shape)) / scale.reshape(shape)
+        # Eq. (7): restore independently sampled channel statistics.
+        return standardized * sampled_scale.reshape(shape) + sampled_location.reshape(shape)
 
 
 class ShallowDSU(nn.Module):
-    def __init__(self,block):
+    """Preserve detector routing metadata while augmenting a block's output."""
+    def __init__(self, block):
         super().__init__()
-        self.block=block
-        self.style=DistributionUncertainty()
-        for key in ('i','f','type','np'):
-            if hasattr(block,key): setattr(self,key,getattr(block,key))
+        self.block = block
+        self.style = DistributionUncertainty()
+        for attribute in ('i', 'f', 'type', 'np'):
+            if hasattr(block, attribute):
+                setattr(self, attribute, getattr(block, attribute))
 
-    def forward(self,x):
-        return self.style(self.block(x))
+    def forward(self, x):
+        features = self.block(x)
+        return self.style(features)

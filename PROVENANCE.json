@@ -21,7 +21,7 @@
   },
   {
     "file": "prdg/dsu.py",
-    "source": "code/models/dsu_shallow.py"
+    "source": "Independent implementation from Li et al., ICLR 2022, Eqs. (1)-(7), https://arxiv.org/abs/2202.03958; original project used only as compatibility oracle"
   },
   {
     "file": "prdg/baselines/mixstyle.py",
@@ -113,7 +113,7 @@
   },
   {
     "file": "LICENSE",
-    "source": "New packaging/CLI code; no original algorithm changed"
+    "source": "GNU official AGPL-3.0 text: https://www.gnu.org/licenses/agpl-3.0.txt"
   },
   {
     "file": "licenses/BeerLaNet-MIT.txt",

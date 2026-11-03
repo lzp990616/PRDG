@@ -2,15 +2,13 @@
 
 **Physics-Guided Domain Generalisation for Blood Cell Detection via Plasma-Referenced Normalisation**
 
-PRDG combines image-only estimated plasma selection (EPS), offline plasma-referenced normalisation (PRN), and training-only distribution uncertainty (DSU) for leave-one-source-out blood-cell detection.
+PRDG combines envelope-based plasma selection (EPS), offline plasma-referenced normalisation (PRN), and training-only domain shifts with uncertainty (DSU; [Li et al., ICLR 2022](https://arxiv.org/abs/2202.03958)) for leave-one-source-out blood-cell detection.
 
 ![Method](assets/method.png)
 
 ## Environment
 
-Runtime checks performed on Python 3.12.2 and the exact package versions in `requirements.txt` (recorded with `pip show`, not inferred historical versions).
-
-**Installation blocker:** the recorded environment has OpenCV 5.0.0.93 with NumPy 1.26.4, although OpenCV declares NumPy >=2 on this Python version. `pip check` confirms the conflict. These pins record the tested runtime, not a validated clean-install lockfile. The commands below are the intended installation flow and will require resolving this conflict before public release; no existing package was changed.
+Python 3.12.2; direct dependencies are pinned in `requirements.txt`. The OpenCV pin was deliberately changed to 4.10.0.84 to support NumPy 1.26.4. Historical and clean-environment versions are separately recorded in tests/environment.json and tests/clean_environment.json.
 
 ```bash
 python -m venv .venv
@@ -19,7 +17,7 @@ python -m pip install -r requirements.txt
 python -m pip install -e . --no-deps
 ```
 
-The pinned torch wheel is the CUDA 11.8 build. No detector framework source is bundled. This repository does not vendor the vision utility dependency used internally by Ultralytics. A clean-environment installation has not yet been tested; see VALIDATION.md for the actually performed checks.
+The pinned torch wheel is the CUDA 11.8 build. OpenCV is pinned to 4.10.0.84 with NumPy 1.26.4. No detector framework source is bundled. See VALIDATION.md for clean-environment checks and the historical environment record.
 
 ## Data
 
@@ -41,7 +39,7 @@ python scripts/train.py --folds data/folds --method PRN+DSU --protocol main --mo
 
 The command serially fits each target RGB reference using that fold's training images only, normalises the copies, trains seeds 42/123/3407, selects best weights on source-internal validation, then performs a final held-out evaluation. `--method Baseline`, `PRN`, or `DSU` gives the other main-table arms. `--model yolov8n.pt` or `yolo11n.pt` uses the corresponding official COCO checkpoint; DSU wraps C2f/C3k2 outputs at indices 2/4 (strides 4/8). Checkpoints are downloaded by Ultralytics or supplied locally.
 
-Main protocol: 640, batch4, maximum120 epochs, patience35, optimizer=auto, deterministic seed. The recorded auto choice is AdamW with initial base lr0.001429 for these three-class experiments. Keep auto rather than forcing a different optimizer schedule. Screening uses `--protocol screen` (40 epochs, patience40). Strong HSV changes only h/s/v to 0.03/0.9/0.6. Offline PRN precedes all training augmentation. DSU p0.5, factor1, eps1e-6; eval and singleton-batch identity. No learned parameters in EPS/PRN.
+Main protocol: 640, batch4, maximum120 epochs, patience35, optimizer=auto, deterministic seed. The recorded auto choice is AdamW with initial base lr0.001429 for these three-class experiments. Keep auto rather than forcing a different optimizer schedule. Screening uses `--protocol screen` (40 epochs, patience40). Strong HSV changes only h/s/v to 0.03/0.9/0.6. Offline PRN precedes all training augmentation. DSU p0.5, factor1, eps1e-6; eval and singleton-batch identity. No learned parameters in EPS/PRN. `masked_mean` uses the whole-image mean when the mask contains fewer than 64 pixels. EPS guarantees at least 3% coverage (or its bright-pixel fallback); at the image sizes used in these experiments this prevents the <64-pixel case. This is not a guarantee for arbitrary tiny inputs.
 
 ```bash
 python scripts/evaluate.py --weights outputs/prdg120/BCCD_seed42/fit/weights/best.pt --data outputs/prdg120/inputs/BCCD/data.yaml --out outputs/evaluation
@@ -90,4 +88,4 @@ Publication metadata is intentionally a placeholder in `CITATION.bib`; do not in
 
 ## License
 
-Original project packaging/code: MIT, subject to third-party notices. Dataset, dependencies and external BeerLaNet core retain their respective terms. Before public release, resolve the DSU upstream licensing/provenance uncertainty described in `THIRD_PARTY_NOTICES.md`. No remote repository is created by these scripts.
+PRDG is released under **AGPL-3.0-only**, consistent with its use and extension of Ultralytics. See LICENSE for the full GNU Affero General Public License version 3. BeerLaNet and MixStyle retain their MIT notices in licenses/ and THIRD_PARTY_NOTICES.md. The DSU module is an independent implementation from the paper, with numerical compatibility checked against the original experiment implementation. Dataset and external dependencies retain their own terms.
