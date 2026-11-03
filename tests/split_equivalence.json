@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "folds": [
+    {
+      "domain": "BCCD",
+      "exact_order_and_membership": true,
+      "train": 935,
+      "val": 165,
+      "test": 160
+    },
+    {
+      "domain": "PBC",
+      "exact_order_and_membership": true,
+      "train": 646,
+      "val": 114,
+      "test": 500
+    },
+    {
+      "domain": "Raabin-WBC",
+      "exact_order_and_membership": true,
+      "train": 646,
+      "val": 114,
+      "test": 500
+    },
+    {
+      "domain": "BCDD",
+      "exact_order_and_membership": true,
+      "train": 986,
+      "val": 174,
+      "test": 100
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+source,method,seed,weights,fold,target_json
+BCCD,PRN+DSU,42,../outputs/prdg120/BCCD_seed42/fit/weights/best.pt,../data/folds/BCCD,../outputs/prdg120/inputs/BCCD/normalization.json

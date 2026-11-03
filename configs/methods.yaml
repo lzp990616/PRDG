@@ -1,0 +1,52 @@
+Baseline:
+  preprocess: raw
+PRN:
+  preprocess: PRN
+PRN+DSU:
+  preprocess: PRN
+  dsu: true
+DSU:
+  preprocess: raw
+  dsu: true
+Strong HSV:
+  preprocess: raw
+  hsv_h: 0.03
+  hsv_s: 0.9
+  hsv_v: 0.6
+MixStyle:
+  preprocess: raw
+  p: 0.5
+  alpha: 0.1
+BeerLaNet+DSU:
+  preprocess: raw
+  dsu: true
+PRN+BeerLaNet+DSU:
+  preprocess: PRN
+  dsu: true
+Reinhard:
+  preprocess: Reinhard
+Macenko:
+  preprocess: Macenko
+Vahadane:
+  preprocess: Vahadane
+B0:
+  preprocess: B0
+  dsu: true
+B1:
+  preprocess: B1
+  dsu: true
+B2:
+  preprocess: B2
+  dsu: true
+B3:
+  preprocess: B3
+  dsu: true
+B4:
+  preprocess: B4
+  dsu: true
+B5:
+  preprocess: B5
+  dsu: true
+B6:
+  preprocess: B6
+  dsu: true

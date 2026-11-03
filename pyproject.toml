@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "prdg"
+version = "0.1.0"
+description = "Physics-guided domain generalisation for blood cell detection"
+requires-python = ">=3.12"
+license = "MIT"
+[tool.setuptools.packages.find]
+include = ["prdg*", "scripts*"]

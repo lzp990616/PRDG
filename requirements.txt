@@ -1,0 +1,12 @@
+# Recorded with pip show in the validation environment. Python 3.12.2.
+--extra-index-url https://download.pytorch.org/whl/cu118
+ultralytics==8.4.135
+torch==2.3.1+cu118
+opencv-python==5.0.0.93
+numpy==1.26.4
+scipy==1.14.1
+pandas==3.0.6
+matplotlib==3.11.1
+PyYAML==6.0.3
+openpyxl==3.1.5
+scikit-learn==1.9.1

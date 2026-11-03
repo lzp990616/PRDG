@@ -1,0 +1,205 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "source": "PBC",
+      "method": "B0",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "PBC",
+      "method": "B1",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "PBC",
+      "method": "B2",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "PBC",
+      "method": "B3",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "PBC",
+      "method": "B4",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "PBC",
+      "method": "B5",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "PBC",
+      "method": "B6",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "PBC",
+      "method": "Reinhard",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "PBC",
+      "method": "Macenko",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "PBC",
+      "method": "Vahadane",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "B0",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "B1",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "B2",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "B3",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "B4",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "B5",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "B6",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "Reinhard",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "Macenko",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCCD",
+      "method": "Vahadane",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "B0",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "B1",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "B2",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "B3",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "B4",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "B5",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "B6",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "Reinhard",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "Macenko",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "Raabin",
+      "method": "Vahadane",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "B0",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "B1",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "B2",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "B3",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "B4",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "B5",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "B6",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "Reinhard",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "Macenko",
+      "max_abs_diff": 0
+    },
+    {
+      "source": "BCDD",
+      "method": "Vahadane",
+      "max_abs_diff": 0
+    }
+  ]
+}

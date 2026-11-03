@@ -1,0 +1,25 @@
+{
+  "metrics": {
+    "map50_95": 0.694363565979154,
+    "map50": 0.9436692819290187,
+    "map75": 0.8443329701187743,
+    "precision": 0.9112956702991487,
+    "recall": 0.8863539674472175,
+    "WBC_AP": 0.7553877367157997,
+    "RBC_AP": 0.7198422793364895,
+    "Platelets_AP": 0.6078606818851724
+  },
+  "weight_sha256": "df84e8c25a3b945a1ccc64172b2187cfaa486bbb9f7d30f4abc204b1eca4703d",
+  "protocol": {
+    "imgsz": 640,
+    "batch": 2,
+    "half": false,
+    "conf": 0.001,
+    "iou": 0.7,
+    "max_det": 300,
+    "split": "test"
+  },
+  "expected_map50_95": 0.694363565979154,
+  "absolute_difference": 0.0,
+  "passed": true
+}

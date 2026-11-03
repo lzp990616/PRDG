@@ -1,0 +1,210 @@
+[
+  {
+    "file": "prdg/__init__.py",
+    "source": "New packaging/CLI code; no original algorithm changed"
+  },
+  {
+    "file": "prdg/baselines/__init__.py",
+    "source": "New packaging/CLI code; no original algorithm changed"
+  },
+  {
+    "file": "scripts/__init__.py",
+    "source": "New packaging/CLI code; no original algorithm changed"
+  },
+  {
+    "file": "prdg/eps.py",
+    "source": "code/train/image_color_normalizers.py (selected functions copied verbatim)"
+  },
+  {
+    "file": "prdg/normalization.py",
+    "source": "code/train/image_color_normalizers.py; code/train/run_background_normalization_v2.py::target_mean"
+  },
+  {
+    "file": "prdg/dsu.py",
+    "source": "code/models/dsu_shallow.py"
+  },
+  {
+    "file": "prdg/baselines/mixstyle.py",
+    "source": "code/models/mixstyle_shallow.py"
+  },
+  {
+    "file": "prdg/baselines/vahadane.py",
+    "source": "code/train/image_color_normalizers.py"
+  },
+  {
+    "file": "prdg/baselines/stains.py",
+    "source": "results/comparison_20261020/stains.py (imports only changed)"
+  },
+  {
+    "file": "prdg/baselines/references.py",
+    "source": "results/bgablation_20261018/methods.py (imports only changed)"
+  },
+  {
+    "file": "prdg/baselines/beerlanet.py",
+    "source": "results/beerlanet_dagger_20261019/adapter.py (external module loading only changed)"
+  },
+  {
+    "file": "prdg/io.py",
+    "source": "New packaging/CLI code; no original algorithm changed"
+  },
+  {
+    "file": "prdg/training.py",
+    "source": "code/train/run_bccd_source_screen.py::DSUTrainer/MixStyleTrainer; results/beerlanet_dagger_20261019/adapter.py::BeerTrainer; results/detectors40_20261021/worker.py (C2f support)"
+  },
+  {
+    "file": "prdg/evaluation.py",
+    "source": "results/paper_tables/gain_full_20261027.py::FP32Validator/evaluate (same val arguments; CSV/paths separated)"
+  },
+  {
+    "file": "scripts/prepare_txlpbc_lodo.py",
+    "source": "data/TXL-PBC_Dataset-master/prepare_txl_loso.py (split functions verbatim; writes copied images instead of source-path lists)"
+  },
+  {
+    "file": "scripts/normalize_dataset.py",
+    "source": "code/train/run_background_normalization_v2.py; results/comparison_20261020/worker.py::prepare; results/bgablation_20261018/methods.py"
+  },
+  {
+    "file": "configs/main.yaml",
+    "source": "data/TXL-PBC_Dataset-master/runs_txl_loso_baseline/loso_bccd_seed42/args.yaml (non-path training arguments)"
+  },
+  {
+    "file": "configs/screen.yaml",
+    "source": "results/ssp_20261014/r/0a1/config.json (40-epoch PRN+DSU control)"
+  },
+  {
+    "file": "configs/methods.yaml",
+    "source": "results/comparison_20261020/worker.py; results/bgablation_20261018/worker.py"
+  },
+  {
+    "file": "scripts/train.py",
+    "source": "results/comparison_20261020/worker.py (CLI and serial loop replace private controller)"
+  },
+  {
+    "file": "scripts/evaluate.py",
+    "source": "results/paper_tables/gain_full_20261027.py::evaluate"
+  },
+  {
+    "file": "scripts/stats.py",
+    "source": "results/paper_tables/add_dsu120.py (same bootstrap seed0, 100000, percentile CI, two-sided Wilcoxon)"
+  },
+  {
+    "file": "scripts/gain_robustness.py",
+    "source": "results/paper_tables/gain_full_20261027.py (same gains, rint/clip, preprocessing order and evaluation)"
+  },
+  {
+    "file": "tables/main_120_raw.csv",
+    "source": "results/paper_tables/main_results_raw_with_DSU.csv (only machine-path prefix removed)"
+  },
+  {
+    "file": "tables/main_120_mean_sd.csv",
+    "source": "results/paper_tables/main_results_mean_sd_with_DSU.csv (only machine-path prefix removed)"
+  },
+  {
+    "file": "tables/comparison_40_mean_sd.csv",
+    "source": "results/paper_tables/supp_comparison_sd.csv (only machine-path prefix removed)"
+  },
+  {
+    "file": "pyproject.toml",
+    "source": "New packaging/CLI code; no original algorithm changed"
+  },
+  {
+    "file": ".gitignore",
+    "source": "New packaging/CLI code; no original algorithm changed"
+  },
+  {
+    "file": "LICENSE",
+    "source": "New packaging/CLI code; no original algorithm changed"
+  },
+  {
+    "file": "licenses/BeerLaNet-MIT.txt",
+    "source": "Official BeerLaNet LICENSE at commit 510b4328ce6de975a2d87643ad7ba940979c0123"
+  },
+  {
+    "file": "licenses/MixStyle-MIT.txt",
+    "source": "https://github.com/KaiyangZhou/Dassl.pytorch/blob/master/LICENSE"
+  },
+  {
+    "file": "THIRD_PARTY_NOTICES.md",
+    "source": "New packaging/CLI code; no original algorithm changed"
+  },
+  {
+    "file": "CITATION.bib",
+    "source": "New packaging/CLI code; no original algorithm changed"
+  },
+  {
+    "file": "scripts/eps_sensitivity.py",
+    "source": "results/paper_tables/analysis_20261027_abc.py::task_b (same formulas and parameter grid)"
+  },
+  {
+    "file": "scripts/reference_ablation.py",
+    "source": "results/bgablation_20261018/diagnostics.py; results/bgablation_20261018/methods.py"
+  },
+  {
+    "file": "tests/compare_original.py",
+    "source": "New packaging documentation or verification code"
+  },
+  {
+    "file": "tests/check_splits.py",
+    "source": "New packaging documentation or verification code"
+  },
+  {
+    "file": "tests/test_modules.py",
+    "source": "New packaging documentation or verification code"
+  },
+  {
+    "file": "requirements.txt",
+    "source": "New packaging documentation or verification code"
+  },
+  {
+    "file": "tests/environment.json",
+    "source": "New packaging documentation or verification code"
+  },
+  {
+    "file": "README.md",
+    "source": "New packaging documentation or verification code"
+  },
+  {
+    "file": "configs/gain_weights.example.csv",
+    "source": "New packaging documentation or verification code"
+  },
+  {
+    "file": "assets/method.png",
+    "source": "Requested method PDF rendered without editing"
+  },
+  {
+    "file": "PROVENANCE.json",
+    "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  },
+  {
+    "file": "tables/comparison_40_raw.csv",
+    "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  },
+  {
+    "file": "tests/baseline_equivalence.json",
+    "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  },
+  {
+    "file": "tests/baseline_evaluation_attempt.json",
+    "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  },
+  {
+    "file": "tests/evaluation_equivalence.json",
+    "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  },
+  {
+    "file": "tests/pixel_equivalence.json",
+    "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  },
+  {
+    "file": "tests/smoke.json",
+    "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  },
+  {
+    "file": "tests/split_equivalence.json",
+    "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  },
+  {
+    "file": "VALIDATION.md",
+    "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  }
+]
