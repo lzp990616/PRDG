@@ -1,6 +1,6 @@
 # Validation and release limitations
 
-Original project files were only read. Runtime copies, training outputs and weights were kept outside this repository. The new isolated .venv is ignored by Git and is not distributed. No remote was created.
+Original project files were only read. Runtime copies, training outputs and weights were kept outside this repository. The new isolated .venv is ignored by Git and is not distributed.
 
 | Check | Result |
 |---|---|
@@ -8,7 +8,7 @@ Original project files were only read. Runtime copies, training outputs and weig
 | DSU/MixStyle, seeded train/eval behavior | PASS, exact tensor equality |
 | Other reference/stain functions | PASS, 40 equivalence checks |
 | Four fold membership and order | PASS, exact agreement with original manifests |
-| Unit checks | PASS, 3 tests |
+| Unit checks | PASS, 4 tests |
 | Existing 120-epoch BCCD PRN+DSU seed42 evaluation | PASS, 0.694363565979154, absolute difference 0 |
 | Earlier historical Baseline evaluation attempt | FAIL strict tolerance, difference 0.0001055824587175; retained, cause not established |
 | Full BCCD PRN+DSU one-epoch smoke | PASS, preprocessing, training, best checkpoint and held-out evaluation completed |
