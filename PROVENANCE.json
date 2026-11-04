@@ -206,5 +206,29 @@
   {
     "file": "VALIDATION.md",
     "source": "New verification evidence or packaging documentation; see VALIDATION.md"
+  },
+  {
+    "file": "tests/clean_environment.json",
+    "source": "2026-11-04 clean-environment and independent DSU verification; see VALIDATION.md"
+  },
+  {
+    "file": "tests/pixel_equivalence_clean.json",
+    "source": "2026-11-04 clean-environment and independent DSU verification; see VALIDATION.md"
+  },
+  {
+    "file": "tests/split_equivalence_clean.json",
+    "source": "2026-11-04 clean-environment and independent DSU verification; see VALIDATION.md"
+  },
+  {
+    "file": "tests/dsu_rewrite_historical_environment.json",
+    "source": "2026-11-04 clean-environment and independent DSU verification; see VALIDATION.md"
+  },
+  {
+    "file": "tests/clean_environment_initial_attempt.json",
+    "source": "Preserved verification interruption; see VALIDATION.md"
+  },
+  {
+    "file": "tests/clean_environment_output_collision.json",
+    "source": "Preserved verification interruption; see VALIDATION.md"
   }
 ]

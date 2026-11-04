@@ -60,4 +60,4 @@ prdg/baselines/vahadane.py
 prdg/baselines/__init__.py
 ```
 
-Release limitations: dependency resolver conflict and unconfirmed DSU upstream license. No data, weights, caches or logs are included.
+Updated 2026-11-04: AGPL-3.0-only, paper-based independent DSU implementation, and clean-environment dependency/test validation. See VALIDATION.md. No data, weights, caches or logs are committed; the local .venv is ignored.
