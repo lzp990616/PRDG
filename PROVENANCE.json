@@ -21,7 +21,7 @@
   },
   {
     "file": "prdg/dsu.py",
-    "source": "Independent implementation from Li et al., ICLR 2022, Eqs. (1)-(7), https://arxiv.org/abs/2202.03958; original project used only as compatibility oracle"
+    "source": "Independent implementation; original project used only as compatibility oracle"
   },
   {
     "file": "prdg/baselines/mixstyle.py",

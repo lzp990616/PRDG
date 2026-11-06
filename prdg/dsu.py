@@ -1,11 +1,7 @@
-"""Independent implementation from the paper: domain shifts with uncertainty.
-
-Li et al., Uncertainty Modeling for Out-of-Distribution Generalization,
-ICLR 2022, Eqs. (1)-(7): https://arxiv.org/abs/2202.03958
+"""Independent implementation of domain shifts with uncertainty (DSU).
 
 Compatibility conventions: unbiased spatial/batch variances, epsilon before
-square roots, NumPy application gate, mean-noise before scale-noise. The paper
-writes population variances; unbiased estimates retain the experiment protocol.
+square roots, NumPy application gate, mean-noise before scale-noise. Unbiased estimates retain the experiment protocol.
 """
 import numpy as np
 import torch
@@ -20,7 +16,7 @@ class DistributionUncertainty(nn.Module):
         self.factor = factor
 
     def _sample_statistic(self, center):
-        # Eqs. (3)-(6): batch uncertainty and Gaussian reparameterization.
+        # Batch uncertainty and Gaussian reparameterization.
         spread = torch.sqrt(torch.var(center, dim=0, keepdim=True,
                                       unbiased=True) + self.eps)
         noise = torch.randn_like(center)

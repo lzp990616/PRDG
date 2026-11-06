@@ -2,7 +2,7 @@
 
 **Physics-Guided Domain Generalization for Blood Cell Detection via Plasma-Referenced Normalization**
 
-PRDG combines envelope-based plasma selection (EPS), offline plasma-referenced normalization (PRN), and training-only domain shifts with uncertainty (DSU; [Li et al., ICLR 2022](https://arxiv.org/abs/2202.03958)) for leave-one-source-out blood-cell detection.
+PRDG combines envelope-based plasma selection (EPS), offline plasma-referenced normalization (PRN), and training-only domain shifts with uncertainty (DSU) for leave-one-source-out blood-cell detection.
 
 ![Method](assets/method.png)
 
