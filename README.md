@@ -1,8 +1,8 @@
 # PRDG
 
-**Physics-Guided Domain Generalisation for Blood Cell Detection via Plasma-Referenced Normalisation**
+**Physics-Guided Domain Generalization for Blood Cell Detection via Plasma-Referenced Normalization**
 
-PRDG combines envelope-based plasma selection (EPS), offline plasma-referenced normalisation (PRN), and training-only domain shifts with uncertainty (DSU; [Li et al., ICLR 2022](https://arxiv.org/abs/2202.03958)) for leave-one-source-out blood-cell detection.
+PRDG combines envelope-based plasma selection (EPS), offline plasma-referenced normalization (PRN), and training-only domain shifts with uncertainty (DSU; [Li et al., ICLR 2022](https://arxiv.org/abs/2202.03958)) for leave-one-source-out blood-cell detection.
 
 ![Method](assets/method.png)
 
@@ -37,7 +37,7 @@ This copies the official data into isolated folds; it never hard-links or modifi
 python scripts/train.py --folds data/folds --method PRN+DSU --protocol main --model yolo26n.pt --out outputs/prdg120
 ```
 
-The command serially fits each target RGB reference using that fold's training images only, normalises the copies, trains seeds 42/123/3407, selects best weights on source-internal validation, then performs a final held-out evaluation. `--method Baseline`, `PRN`, or `DSU` gives the other main-table arms. `--model yolov8n.pt` or `yolo11n.pt` uses the corresponding official COCO checkpoint; DSU wraps C2f/C3k2 outputs at indices 2/4 (strides 4/8). Checkpoints are downloaded by Ultralytics or supplied locally.
+The command serially fits each target RGB reference using that fold's training images only, normalizes the copies, trains seeds 42/123/3407, selects best weights on source-internal validation, then performs a final held-out evaluation. `--method Baseline`, `PRN`, or `DSU` gives the other main-table arms. `--model yolov8n.pt` or `yolo11n.pt` uses the corresponding official COCO checkpoint; DSU wraps C2f/C3k2 outputs at indices 2/4 (strides 4/8). Checkpoints are downloaded by Ultralytics or supplied locally.
 
 Main protocol: 640, batch4, maximum120 epochs, patience35, optimizer=auto, deterministic seed. The recorded auto choice is AdamW with initial base lr0.001429 for these three-class experiments. Keep auto rather than forcing a different optimizer schedule. Screening uses `--protocol screen` (40 epochs, patience40). Strong HSV changes only h/s/v to 0.03/0.9/0.6. Offline PRN precedes all training augmentation. DSU p0.5, factor1, eps1e-6; eval and singleton-batch identity. No learned parameters in EPS/PRN. `masked_mean` uses the whole-image mean when the mask contains fewer than 64 pixels. EPS guarantees at least 3% coverage (or its bright-pixel fallback); at the image sizes used in these experiments this prevents the <64-pixel case. This is not a guarantee for arbitrary tiny inputs.
 
@@ -66,7 +66,7 @@ Raabin-WBC and BCDD platelet APs have **very few annotated examples**. Per-class
 
 ## Comparisons and ablations
 
-Supported CLI methods: Baseline, DSU, PRN, PRN+DSU, Strong HSV, MixStyle, Reinhard, Macenko, Vahadane, BeerLaNet+DSU, PRN+BeerLaNet+DSU, and B0--B6. B1=brightness-only Otsu, B5=whole-image grey-world reference, B6=per-channel99th-percentile white point. These reference ablations keep DSU and the original fixed PRN target; B5 is not neutral-grey correction. B2=Lab k-means, B3=channelwise morphological reference, B4=local reference. B3 kernel ratio is determined on source-training annotations only, as in the paper diagnostic; no target-label tuning. Stain templates use the first training image sorted by (source,new_name). The selected template and fitted target are recorded for every fold.
+Supported CLI methods: Baseline, DSU, PRN, PRN+DSU, Strong HSV, MixStyle, Reinhard, Macenko, Vahadane, BeerLaNet+DSU, PRN+BeerLaNet+DSU, and B0--B6. B1=brightness-only Otsu, B5=whole-image gray-world reference, B6=per-channel99th-percentile white point. These reference ablations keep DSU and the original fixed PRN target; B5 is not neutral-gray correction. B2=Lab k-means, B3=channelwise morphological reference, B4=local reference. B3 kernel ratio is determined on source-training annotations only, as in the paper diagnostic; no target-label tuning. Stain templates use the first training image sorted by (source,new_name). The selected template and fitted target are recorded for every fold.
 
 BeerLaNet dagger uses the unchanged official core with a self-implemented detection adapter; see `THIRD_PARTY_NOTICES.md` for the pinned commit, SHA and license. Download upstream separately; set `BEERLANET_SRC` before selecting this method. No unofficial replacement is silently substituted.
 
@@ -76,7 +76,7 @@ python scripts/reference_ablation.py --fold data/folds/BCCD --out outputs/refere
 python scripts/gain_robustness.py --weights-csv configs/gain_weights.example.csv --out outputs/gains
 ```
 
-Gain manifest paths are relative to the manifest file; raw held-out images must be provided, even for normalised models. Gain multiplication, clipping and np.rint occur first, then EPS/reference estimation is repeated. Normalisation uses the fixed training target. Invariance is conditional on stable masks and inactive clipping; measured perturbations include clipping.
+Gain manifest paths are relative to the manifest file; raw held-out images must be provided, even for normalized models. Gain multiplication, clipping and np.rint occur first, then EPS/reference estimation is repeated. Normalization uses the fixed training target. Invariance is conditional on stable masks and inactive clipping; measured perturbations include clipping.
 
 ## Verification
 

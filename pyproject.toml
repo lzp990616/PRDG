@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "prdg"
 version = "0.1.0"
-description = "Physics-guided domain generalisation for blood cell detection"
+description = "Physics-guided domain generalization for blood cell detection"
 requires-python = ">=3.12"
 license = "AGPL-3.0-only"
 [tool.setuptools.packages.find]
